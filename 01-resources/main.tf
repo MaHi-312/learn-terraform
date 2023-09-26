@@ -7,6 +7,14 @@ resource "aws_instance" "web" {
   }
 }
 
+resource "aws_route53_record" "www" {
+  zone_id = "Z088606431E8311EPHBFV"
+  name    = "test.malleswaridevops.online"
+  type    = "A"
+  ttl     = 30
+  records = [ aws_instance.web.private_ip ]
+}
+
 
 
 
