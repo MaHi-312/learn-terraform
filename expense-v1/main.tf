@@ -65,7 +65,7 @@ resource "aws_instance" "mysql" {
   }
 }
 resource "aws_route53_record" "mysql" {
-  zone_id = local.zone_id
+  zone_id = localf.zone_id
   name    = "mysql.${var.zone_id}"
   type    = "A"
   ttl     = 30
