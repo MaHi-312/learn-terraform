@@ -1,5 +1,5 @@
 resource "aws_instance" "frontend" {
-  ami           = "ami-03265a0778a880afb"
+  ami           = data.aws_ami.ami.image_id
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0198935c644f120f6"]
 
@@ -7,7 +7,6 @@ resource "aws_instance" "frontend" {
     Name = "frontend"
   }
 }
-
 resource "aws_route53_record" "frontend" {
   zone_id = "Z088606431E8311EPHBFV"
   name    = "frontend.malleswaridevops.online"
@@ -17,7 +16,7 @@ resource "aws_route53_record" "frontend" {
 }
 
 resource "aws_instance" "backend" {
-  ami           = "ami-03265a0778a880afb"
+  ami           = data.aws_ami.ami.image_id
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0198935c644f120f6"]
 
@@ -25,7 +24,6 @@ resource "aws_instance" "backend" {
     Name = "backend"
   }
 }
-
 resource "aws_route53_record" "backend" {
   zone_id = "Z088606431E8311EPHBFV"
   name    = "backend.malleswaridevops.online"
@@ -35,7 +33,7 @@ resource "aws_route53_record" "backend" {
 }
 
 resource "aws_instance" "mysql" {
-  ami           = "ami-03265a0778a880afb"
+  ami           = data.aws_ami.ami.image_id
   instance_type = "t3.micro"
   vpc_security_group_ids = ["sg-0198935c644f120f6"]
 
@@ -43,7 +41,6 @@ resource "aws_instance" "mysql" {
     Name = "mysql"
   }
 }
-
 resource "aws_route53_record" "mysql" {
   zone_id = "Z088606431E8311EPHBFV"
   name    = "mysql.malleswaridevops.online"
