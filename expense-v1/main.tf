@@ -14,7 +14,7 @@ resource "aws_route53_record" "frontend" {
   ttl     = 30
   records = [ aws_instance.frontend.private_ip ]
 }
-resource "null_resource" "frontend" {
+resource "null_resource" "1" {
   depends_on = [aws_route53_record.frontend]
   provisioner "local-exec" {
     command = <<EOF
@@ -44,7 +44,7 @@ resource "aws_route53_record" "backend" {
   records = [ aws_instance.backend.private_ip ]
 }
 
-resource "null_resource" "backend" {
+resource "null_resource" "3" {
   depends_on = [aws_route53_record.backend]
   provisioner "local-exec" {
     command = <<EOF
@@ -72,7 +72,7 @@ resource "aws_route53_record" "mysql" {
   records = [aws_instance.mysql.private_ip]
 }
 
-resource "null_resource" "mysql" {
+resource "null_resource" "2" {
   depends_on = [aws_route53_record.mysql]
   provisioner "local-exec" {
     command = <<EOF
